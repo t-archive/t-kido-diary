@@ -3,7 +3,7 @@
 --jp-sans:"Yu Gothic","Hiragino Kaku Gothic ProN","Noto Sans CJK JP","Meiryo",system-ui,sans-serif;}
 .public-research{font-family:var(--jp-sans)}.public-research h1,.public-research blockquote{font-family:var(--jp-serif)}
 .public-nav{display:flex;flex-wrap:wrap;gap:4px 18px;padding:12px 24px;background:#f9f7f0;color:#284c3c;border-bottom:1px solid #c8d1c5;font:14px/1.6 var(--jp-sans);position:relative;z-index:4}
-.public-nav a{display:inline-flex;align-items:center;min-height:40px;color:#284c3c;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
+body > .public-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0;color:#315c48;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
 .public-nav a:focus-visible{outline:3px solid #8b6238;outline-offset:2px}
 .public-doc-links{display:flex;flex-wrap:wrap;gap:20px;padding:12px 24px;background:#eef1e9;font:14px/1.6 var(--jp-sans)}
 .public-doc-links a{color:#284c3c}.public-page{margin:0;background:#f3f0e8;color:#283b37;font:16px/1.9 var(--jp-sans)}
