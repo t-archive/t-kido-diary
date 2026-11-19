@@ -177,7 +177,6 @@ function sourceBlock(s, words) {
 }
 function checkpointBlock(p, words, inline, nameNotes) {
   const part = el('section', 'cp-reading'); part.id = 'cp-' + p.id; part.tabIndex = -1;
-  part.append(el('div', 'cp-meta', p.page + '・' + p.kind));
   if (p.title) part.append(el('h4', '', p.title));
   if (p.verse) {
     const verse = el('blockquote', 'cp-verse'); verse.textContent = p.verse;
@@ -193,27 +192,7 @@ function checkpointBlock(p, words, inline, nameNotes) {
   }
   return part;
 }
-function displayEdition(right, edition, words, nameNotes) {
-  const heading = right.firstElementChild;
-  const previous = el('details','cp-previous');
-  previous.append(el('summary','','記事全体の訳を読む'));
-  for (const node of Array.from(right.children)) if (node !== heading) previous.append(node);
-  if (nameNotes && !edition.sequence) previous.open = true;
-  if (edition.sequence) {
-    for (const item of edition.sequence) {
-      right.append(typeof item === 'string' ? modernText(item,'body-text cp-continuation',words,nameNotes) : checkpointBlock(edition.passages[item],words,true,nameNotes));
-    }
-  } else {
-    right.append(el('p','cp-mode-label','この記事の校読箇所'));
-    for (const p of edition.passages) right.append(checkpointBlock(p,words,false,nameNotes));
-  }
-  for (const text of edition.annotation_notes || []) {
-    const note=el('details','cp-note'); note.append(el('summary','','字形の注'),el('p','',text));right.append(note);
-  }
-  right.append(previous);
-}
-
-function buildUnit(u,meta,words) {
+function buildUnit(u,meta,words,checkpoint) {
   const view = el('div'), head = el('header','article-head'), title = label(meta), reading = readingText(u.current_context ?? u.translation);
   head.append(el('div','article-kicker',`${volumeNames[u.volume]}`),el('h2','',Array.from(title).length > 38 ? Array.from(title).slice(0,38).join('')+'…' : title));
   view.append(head);
@@ -244,32 +223,38 @@ function buildUnit(u,meta,words) {
   const cols = el('div','columns'), left = el('section','pane source-pane'), right = el('section','pane modern-pane');
   const ll = el('h3','pane-label','原 文'); left.append(ll); u.spans.forEach(s => left.append(sourceBlock(s,words)));
   const rl = el('h3','pane-label','現代語訳'); right.append(rl);
-  const translated=el('div','body-text translation-body');
-  let offset=0;
-  for (const match of reading.text.matchAll(/〔注(\d+)〕/g)) {
-    translated.append(modernText(reading.text.slice(offset,match.index),'translation-run',words,u.name_notes));
-    const n=Number(match[1]);
-    const marker=button(`注${n}`,()=>readingNotes.openAndFocus('reading-note-'+n),'reading-note-link');
-    marker.setAttribute('aria-label',`注${n}：読みや意味の注記を確認`); translated.append(marker);offset=match.index+match[0].length;
-  }
-  translated.append(modernText(reading.text.slice(offset),'translation-run',words,u.name_notes));right.append(translated);
-  // Original marginal/headnote translations are reading content, not editor metadata.
-  const normalizeNote = text => String(text).replace(/\s+/g,'');
-  const inlineNotes = u.source_notes.filter(n => !(u.id === 'V1-T080-007' && n.source_quote?.includes('品川彌二郞ニユーヨルク')) && typeof n.translation === 'string' && n.translation.trim() && !/^(?:ママ|鼇頭|鰲頭|原文空白[、・]?ママ|原文空白)$/.test(n.translation.trim()) && !normalizeNote(u.translation).includes(normalizeNote(n.translation)));
-  for (const n of inlineNotes) {
-    if (translated.textContent) translated.append(el('span','','\n'));
-    translated.append(modernText((/[鼇鰲]頭/.test(n.source_quote || '') ? '〔原注：鼇頭〕' : '')+headnotePresentation(n.translation),'translation-run',words,u.name_notes));
-  }
-  if (u.translation === '' && !inlineNotes.length) right.append(el('p','empty-text','〔訳本文はありません。原注・訳注を確認してください。〕'));
-  if (u.edition) displayEdition(right, u.edition, words, u.name_notes);
-  if (u.thread_readings?.length) {
-    const details=el('details','thread-review'); details.append(el('summary','','この箇所の校訂・訳注'));
-    for (const r of u.thread_readings) {
-      const item=el('section'); item.append(el('strong','',r.page+'頁　'+r.form),el('p','',r.reading));
-      if(r.note && r.note!==r.reading)item.append(el('p','',r.note));
-      details.append(item);
+  const edition = u.edition;
+  if (edition?.sequence) {
+    for (const entry of edition.sequence) {
+      right.append(typeof entry === 'string'
+        ? modernText(entry, 'body-text cp-continuation', words, u.name_notes)
+        : checkpointBlock(edition.passages[entry], words, true, u.name_notes));
     }
-    right.append(details);
+  } else {
+    const translated=el('div','body-text translation-body');
+    let offset=0;
+    for (const match of reading.text.matchAll(/〔注(\d+)〕/g)) {
+      translated.append(modernText(reading.text.slice(offset,match.index),'translation-run',words,u.name_notes));
+      const n=Number(match[1]);
+      const marker=button(`注${n}`,()=>readingNotes.openAndFocus('reading-note-'+n),'reading-note-link');
+      marker.setAttribute('aria-label',`注${n}：読みや意味の注記を確認`); translated.append(marker);offset=match.index+match[0].length;
+    }
+    translated.append(modernText(reading.text.slice(offset),'translation-run',words,u.name_notes));right.append(translated);
+    // Original marginal/headnote translations are reading content, not editor metadata.
+    const normalizeNote = text => String(text).replace(/\s+/g,'');
+    const inlineNotes = u.source_notes.filter(n => !(u.id === 'V1-T080-007' && n.source_quote?.includes('品川彌二郞ニユーヨルク')) && typeof n.translation === 'string' && n.translation.trim() && !/^(?:ママ|鼇頭|鰲頭|原文空白[、・]?ママ|原文空白)$/.test(n.translation.trim()) && !normalizeNote(u.translation).includes(normalizeNote(n.translation)));
+    for (const n of inlineNotes) {
+      if (translated.textContent) translated.append(el('span','','\n'));
+      translated.append(modernText((/[鼇鰲]頭/.test(n.source_quote || '') ? '〔原注：鼇頭〕' : '')+headnotePresentation(n.translation),'translation-run',words,u.name_notes));
+    }
+    if (u.translation === '' && !inlineNotes.length) right.append(el('p','empty-text','〔訳本文はありません。原注・訳注を確認してください。〕'));
+    const linkedPassage = checkpoint && edition?.passages.find(p => p.id === checkpoint);
+    if (linkedPassage) notes.append(checkpointBlock(linkedPassage, words, false, u.name_notes));
+  }
+  for (const text of edition?.annotation_notes || []) {
+    const note = el('details', 'cp-note');
+    note.append(el('summary', '', '字形の注'), el('p', '', text));
+    notes.append(note);
   }
   cols.append(left,right); view.append(cols,notes); return view;
 }
@@ -301,7 +286,7 @@ async function choose(id,newKind,scroll = false,write = true,words = [],checkpoi
     const records = await KIDO.load(meta.chunk); if (token !== generation) return;
     const item = records.find(x => (newKind === 'unit' ? x.id : x.source_ref) === id);
     if (!item) throw Error('資料内に指定されたIDがありません：'+id);
-    const view = newKind === 'unit' ? buildUnit(item,meta,words) : buildPage(item,meta,words);
+    const view = newKind === 'unit' ? buildUnit(item,meta,words,checkpoint) : buildPage(item,meta,words);
     if (token !== generation) return;
     $('reader').replaceChildren(...Array.from(view.children));
     delete $('reader').dataset.unit; delete $('reader').dataset.page; $('reader').dataset[newKind] = id;
@@ -379,7 +364,6 @@ try {
   for (const id of ['font-size','line-height','theme','display-mode','reading-width']) $(id).addEventListener('input',applySettings);
   $('about-btn').onclick = () => showAbout(); $('close-about').onclick = () => $('about').close();
   for (const id of ['skip-reader','jump-reader','back-reader']) $(id).onclick = e => { e.preventDefault(); focusAt($('reader')); };
-  for (const id of ['jump-search','back-search']) $(id).onclick = e => { e.preventDefault(); focusAt($('query')); };
   window.addEventListener('hashchange',() => { if (!route()) restoreURL(); });
   if (!route()) { const saved = recall('position'); if (saved && ['unit','page'].includes(saved.kind) && (saved.kind === 'unit' ? byId : pageById).has(saved.id)) choose(saved.id,saved.kind,false,false); else choose('V1-T002-002','unit',false,false); }
 } catch (e) { $('reader').setAttribute('aria-busy','false'); setStatus(e.message,true); $('load-notice').hidden = false; $('load-notice').replaceChildren(el('p','error',e.message),el('p','','時間をおいて再読み込みしてください。')); }
