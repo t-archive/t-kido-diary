@@ -20,3 +20,13 @@ https://geocode.csis.u-tokyo.ac.jp/
 R07追加：Additional town coordinates from Natural Earth and Wikidata structured data (CC0). Delegation itinerary comparison: Japan Center for Asian Historical Records. Marine display assumptions and source-linkage corrections by R20. Private research edition; not published.
 
 R08: review treatments and interface changes; private research. Existing attribution and license conditions retained.
+
+地域代表点に利用したCODHの資料
+
+『国勢調査町丁・字等別境界データセット』（CODH作成、DOI 10.20676/00000450）。CODHがe-Statの「令和2年国勢調査町丁・字等別境界データ」を加工。本サイトでは箱根・木賀などの地域代表点として使用。
+資料　https://geoshape.ex.nii.ac.jp/ka/
+ライセンス　CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
+
+『歴史的行政区域データセットβ版』（CODH作成、DOI 10.20676/00000447）。本サイトでは秋穂・吉岡宿周辺などの地域代表点として使用。
+資料　https://geoshape.ex.nii.ac.jp/city/
+ライセンス　CC BY 4.0　https://creativecommons.org/licenses/by/4.0/

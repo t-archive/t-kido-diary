@@ -93,3 +93,13 @@ https://www.jacar.go.jp/exhibition/iwakura/history/
 行程①追加の地域参考点は各行の source_url に記載。江戸宿場データセット、歴史的行政区域データセットβ版、『日本歴史地名大系』地名項目データセット（CODH作成、doi:10.20676/00000448）、GeoLOD。Geoshape https://geoshape.ex.nii.ac.jp/ 。上記各データセットの提供条件に従う（CC BY 4.0）。建物位置や船の碇泊位置は表さない。
 行程③の新規参考点3件は各行に出典URL。秋穂は歴史的行政区域データセットβ版、今井村は国勢調査町丁・字等別境界データセット、高知城下は『日本歴史地名大系』施設・地点項目データセット（CODH作成）doi:10.20676/00000456 の高知城を地域の代表点に使用。建物への訪問・宿の所在地を示さない。
 ④ 吉岡宿の比定資料 大和町観光物産協会 https://www.taiwa-tp.jp/2025_06-16_yoshioka_tanbokai/ 。地域の参考点は歴史的行政区域データセットβ版（CODH作成）大和町 https://geoshape.ex.nii.ac.jp/city/resource/04421A1968.html 。
+
+地域代表点に利用したCODHの資料
+
+『国勢調査町丁・字等別境界データセット』（CODH作成、DOI 10.20676/00000450）。CODHがe-Statの「令和2年国勢調査町丁・字等別境界データ」を加工。本サイトでは箱根・木賀などの地域代表点として使用。
+資料　https://geoshape.ex.nii.ac.jp/ka/
+ライセンス　CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
+
+『歴史的行政区域データセットβ版』（CODH作成、DOI 10.20676/00000447）。本サイトでは秋穂・吉岡宿周辺などの地域代表点として使用。
+資料　https://geoshape.ex.nii.ac.jp/city/
+ライセンス　CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
