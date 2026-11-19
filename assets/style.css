@@ -40,3 +40,22 @@ mark{background:#e9d6a7;color:#24382d}body[data-theme=dark] mark{background:#786
 :root{--muted:#626b63}.error{color:#992e2e!important}body[data-theme=dark] .error{color:#ffb4ab!important}
 
 .name-toggle{display:inline-block;font:500 .72em/1.35 sans-serif;padding:0 .3em;margin:0 .14em;vertical-align:super;border:1px solid #709591;border-radius:.25em;color:#19564f;background:#f5faf8;cursor:pointer}.name-note:not([hidden]){display:inline;padding:.15em .45em;background:#edf6f3;color:#203f39;font:.88em/1.7 sans-serif}.name-note[hidden]{display:none}span.cp-continuation,span.cp-text{display:block}
+@media screen {
+  html { scrollbar-gutter: stable; scroll-padding-bottom: 5rem; }
+  body { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); }
+  .page-turns {
+    position: fixed;
+    right: max(12px, env(safe-area-inset-right, 0px));
+    bottom: max(10px, env(safe-area-inset-bottom, 0px));
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--paper);
+  }
+  .page-turns button { min-width: 5em; min-height: 44px; touch-action: manipulation; }
+  .page-turns #position { min-width: 11ch; text-align: center; font-variant-numeric: tabular-nums; }
+}

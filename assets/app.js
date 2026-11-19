@@ -99,8 +99,10 @@ function updateControls() {
   const pos = rows.findIndex(x => x.id === selected);
   $('position').textContent = `${pos+1} / ${rows.length}`;
   $('breadcrumb').textContent = volumeNames[volume] + ' ／ ' + (kind === 'unit' ? '原文・現代語訳' : '原文半頁');
-  for (const n of ['previous','previous-bottom']) $(n).disabled = pos <= 0;
-  for (const n of ['next','next-bottom']) $(n).disabled = pos < 0 || pos >= rows.length-1;
+  const turnRows = pendingChoice ? rowsFor(pendingChoice.kind, pendingChoice.volume) : rows;
+  const turnIndex = pendingChoice ? turnRows.findIndex(row => row.id === pendingChoice.id) : pos;
+  $('previous').disabled = turnIndex <= 0;
+  $('next').disabled = turnIndex < 0 || turnIndex >= turnRows.length - 1;
 }
 function renderList() {
   const box = $('results'); box.replaceChildren();
@@ -179,13 +181,13 @@ function checkpointBlock(p, words, inline, nameNotes) {
   const part = el('section', 'cp-reading'); part.id = 'cp-' + p.id; part.tabIndex = -1;
   if (p.title) part.append(el('h4', '', p.title));
   if (p.verse) {
-    const verse = el('blockquote', 'cp-verse'); verse.textContent = p.verse;
+    const verse = el('blockquote', 'body-text cp-verse'); verse.textContent = p.verse;
     part.append(el('div','cp-label','詩歌の原文'), verse, el('div','cp-label','訳'));
   } else if (!inline) {
     const quote = el('details', 'cp-quote'), original = el('p'); original.textContent = p.source;
     quote.append(el('summary','','対応する原文'),original); part.append(quote);
   }
-  part.append(modernText(p.text, 'cp-text', words, nameNotes));
+  part.append(modernText(p.text, 'body-text cp-text', words, nameNotes));
   if (p.note) {
     const note = el('details', 'cp-note'), toggle = el('summary', '', '注');
     toggle.setAttribute('aria-label','この訳の注を開閉'); note.append(toggle,el('p','',p.note)); part.append(note);
@@ -302,6 +304,7 @@ async function choose(id,newKind,scroll = false,write = true,words = [],checkpoi
     $('reader').setAttribute('aria-busy','false'); $('load-notice').hidden = true;
     setStatus(`${volumeNames[volume]}の本文を表示しました。`);
     if (target) { if (document.body.dataset.display === 'source') { $('display-mode').value = 'parallel'; document.body.dataset.display = 'parallel'; } focusAt(target); }
+    else if (scroll === 'page-turn') $('reader').scrollIntoView({block:'start', behavior:'instant'});
     else if (scroll) focusAt($('reader'));
   } catch (e) {
     if (token !== generation) return;
@@ -311,7 +314,7 @@ async function choose(id,newKind,scroll = false,write = true,words = [],checkpoi
     $('load-notice').hidden = false; setStatus(message,true);
   }
 }
-function step(delta) { const current = pendingChoice || {id:selected,kind,volume}; const rows = rowsFor(current.kind,current.volume), i = rows.findIndex(x => x.id === current.id); if (rows[i+delta]) choose(rows[i+delta].id,current.kind,true); }
+function step(delta) { const current = pendingChoice || {id:selected,kind,volume}; const rows = rowsFor(current.kind,current.volume), i = rows.findIndex(x => x.id === current.id); if (rows[i+delta]) choose(rows[i+delta].id,current.kind,'page-turn'); }
 async function search() {
   const token = ++searchGeneration, q = $('query').value.trim(); if (!q) { tocList(); return; }
   query = q; searching = true; listOffset = 0; list = []; renderList();
@@ -358,8 +361,8 @@ try {
   $('toc').onchange = () => choose($('toc').value,kind,true);
   $('browse-kind').onchange = () => { const k = $('browse-kind').value; tocList(); choose(rowsFor(k)[0].id,k,true); };
   document.querySelectorAll('[data-volume]').forEach(b => b.onclick = () => { const v = +b.dataset.volume; tocList(); choose(rowsFor(kind,v)[0].id,kind,true); });
-  for (const id of ['previous','previous-bottom']) $(id).onclick = () => step(-1);
-  for (const id of ['next','next-bottom']) $(id).onclick = () => step(1);
+  $('previous').onclick = () => step(-1);
+  $('next').onclick = () => step(1);
   $('settings-btn').onclick = () => { const hide = !$('settings').hidden; $('settings').hidden = hide; $('settings-btn').setAttribute('aria-expanded',String(!hide)); if (!hide) focusAt($('font-size')); };
   for (const id of ['font-size','line-height','theme','display-mode','reading-width']) $(id).addEventListener('input',applySettings);
   $('about-btn').onclick = () => showAbout(); $('close-about').onclick = () => $('about').close();
