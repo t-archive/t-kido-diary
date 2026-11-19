@@ -29,16 +29,6 @@ window.addEventListener('popstate', () => selectCategory());
 window.addEventListener('hashchange', () => selectCategory());
 selectCategory();
 
-// Native named details are exclusive. This also supports browsers lacking that behavior.
-for (const group of document.querySelectorAll('.feature-days')) {
-  group.addEventListener('toggle', event => {
-    const day = event.target;
-    if (day.parentElement !== group || !day.open) return;
-    for (const sibling of group.children) {
-      if (sibling !== day) sibling.open = false;
-    }
-  }, true);
-}
 
 for (const button of document.querySelectorAll('.feature-inline-toggle')) {
   button.addEventListener('click', () => {

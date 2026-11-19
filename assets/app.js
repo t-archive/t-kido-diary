@@ -13,9 +13,6 @@ function setStatus(t, error = false) { $('status').textContent = t; $('status').
 function storageWarning() { $('storage-notice').hidden = false; }
 function remember(k, v) { try { localStorage.setItem('kido-v01-' + k, JSON.stringify(v)); } catch { storageWarning(); } }
 function recall(k) { try { const raw = localStorage.getItem('kido-v01-' + k); if (!raw) return null; try { return JSON.parse(raw); } catch { storageWarning(); return null; } } catch { storageWarning(); return null; } }
-function badge(tx, warn = false) { return el('span', 'badge' + (warn ? ' warn' : ''), tx); }
-function pretty(v) { return typeof v === 'string' ? v : JSON.stringify(v, null, 2); }
-function nonempty(v) { return v !== undefined && v !== null && v !== '' && (!Array.isArray(v) || v.length > 0); }
 // Reading presentation only; stored translations and source references are untouched.
 // Match the second volume's reading convention without changing stored text.
 function headnotePresentation(value) {
@@ -62,28 +59,10 @@ function rowsFor(k = kind, v = volume) { const key = k + v; if (!rowsCache.has(k
 function canonicalHash(id = selected, k = kind) { return '#' + (k === 'unit' ? 'u' : 'p') + '=' + encodeURIComponent(id); }
 function restoreURL() { if (selected) try { history.replaceState(null, '', canonicalHash()); } catch { /* URL cannot be restored; status still identifies the displayed record. */ } }
 
-// Only these display labels are translated. Original keys and values remain in
-// the separate, on-demand raw record; unknown fields are never dropped.
-const fieldLabels = {cp:'原文の文字位置',text:'記録本文',ownership_status:'原注の記注者・所属状態（保存値）',identity_group_id:'同定記録グループID（保存値）',identity_overlay:'後発判断（保存値）',source_quote:'原注原文',translation:'原注訳',placement:'原注の位置・帰属',source_note_translation:'原注訳',source_ref:'原文参照ID',source_ref_id:'原文参照ID',unit_id:'訳単位ID',original_ref:'元の原文ID',start:'開始位置',end:'終了位置',legacy_start:'旧開始位置',legacy_end:'旧終了位置',quote:'原文引用',legacy_quote:'旧引用',date_status:'日付状態（保存値）',qa_grade:'確認状況の記録',hold_issues:'個別の留保',image_reference:'原画像の参照情報',ndl_public_url:'NDL公開原資料',text_sha256:'原文SHA-256',translation_ids:'接続する訳単位ID',hold_unit_ids:'未確定事項がある記事の参照番号',empty_text:'OCR本文が空文字',volume:'巻',koma:'コマ',side:'右・左（保存値）',source_notes:'原注',translator_notes:'訳注'};
-function rawDisclosure(title, value) { return disclosure(title, box => box.append(el('pre', '', pretty(value))), false, false); }
-function record(box, obj) {
-  if (!obj || typeof obj !== 'object') { box.append(el('p', '', String(obj))); return; }
-  const dl = el('dl', 'note-record');
-  for (const [k,v] of Object.entries(obj)) {
-    if (!nonempty(v)) continue;
-    dl.append(el('dt', '', fieldLabels[k] || k)); const dd = el('dd');
-    if (typeof v === 'object') dd.append(rawDisclosure(Array.isArray(v) ? `${v.length}件の保存項目を開く` : '保存項目を開く', v));
-    else dd.textContent = annotationText(v);
-    dl.append(dd);
-  }
-  box.append(dl);
-}
-function addValue(box, title, value) {
-  if (!nonempty(value)) return;
+function addNotes(box, title, items) {
+  if (!items.length) return;
   box.append(el('h4', '', title));
-  if (Array.isArray(value)) for (const x of value) { if (typeof x === 'string') box.append(el('p', 'note-record', x)); else record(box, x); }
-  else if (typeof value === 'object') record(box, value);
-  else box.append(el('p', '', String(value)));
+  for (const text of items) box.append(el('p', 'note-record', text));
 }
 function disclosure(title, build, open = false, heading = true) {
   const d = el('details'), summary = el('summary'), content = el('div', 'note-content');
@@ -128,7 +107,7 @@ function renderList() {
   for (const r of list.slice(listOffset, listOffset + pageSize)) {
     const b = button('', () => choose(r.id,r.kind,true,true,r.words || []), 'result' + (r.id === selected ? ' active' : ''));
     if (r.id === selected) b.setAttribute('aria-current','true');
-    b.append(el('span','result-meta',`${volumeNames[r.volume]} · ${r.kind === 'page' ? '原文半頁' : '記事'}${r.hold ? ' · 未確定事項あり' : ''}`));
+    b.append(el('span','result-meta',`${volumeNames[r.volume]} · ${r.kind === 'page' ? '原文半頁' : '記事'}`));
     if (r.searchRecord) {
       const result = KidoSearch.excerpts(r.kind === 'unit' ? {...r.searchRecord,text:readingText(r.searchRecord.text).text} : r.searchRecord,volumeNames[r.volume],r.words);
       if (result.fields.length) b.append(el('span','result-fields',result.fields.join(' ／ ')));
@@ -194,7 +173,6 @@ function modernText(text, cls, words, notes) {
 function sourceBlock(s, words) {
   const b = el('section','span-block'), p = el('div','source-location'), meta = pageById.get(s.ref);
   p.append(linkPage(s.ref,`${meta.koma}コマ ${meta.side === 'right' ? '右' : '左'} の原文全文を開く ↗`));
-  p.append(disclosure('詳細情報：対応位置', box => record(box,{ref:s.ref,start:s.start,end:s.end,original_ref:s.original_ref,legacy_start:s.legacy_start,legacy_end:s.legacy_end}),false,false));
   b.append(p,textBody(s.quote,'body-text',words)); return b;
 }
 function checkpointBlock(p, words, inline, nameNotes) {
@@ -218,7 +196,7 @@ function checkpointBlock(p, words, inline, nameNotes) {
 function displayEdition(right, edition, words, nameNotes) {
   const heading = right.firstElementChild;
   const previous = el('details','cp-previous');
-  previous.append(el('summary','',edition.revised_context ? '前後を含む参考訳を開く（今回の補訳を反映）' : '前後を含む記事全体の訳を開く（P08）'));
+  previous.append(el('summary','','記事全体の訳を読む'));
   for (const node of Array.from(right.children)) if (node !== heading) previous.append(node);
   if (nameNotes && !edition.sequence) previous.open = true;
   if (edition.sequence) {
@@ -238,14 +216,6 @@ function displayEdition(right, edition, words, nameNotes) {
 function buildUnit(u,meta,words) {
   const view = el('div'), head = el('header','article-head'), title = label(meta), reading = readingText(u.current_context ?? u.translation);
   head.append(el('div','article-kicker',`${volumeNames[u.volume]}`),el('h2','',Array.from(title).length > 38 ? Array.from(title).slice(0,38).join('')+'…' : title));
-  const badges = el('div','badges'); badges.append(badge(`${u.spans.length}件の原文参照`));
-  if (u.spans.length > 1) badges.append(badge(`${new Set(u.spans.map(x => x.ref)).size}半頁に接続`));
-  if (u.edition) badges.append(badge('校読 '+u.edition.passages.length+'項目'));
-  if (u.hold && !u.edition) badges.append(badge('未確定事項あり',true));
-  if (u.qa && u.qa !== 'NONE') badges.append(badge('確認事項あり',true));
-  if (u.flags?.date_open) badges.append(badge('日付未確定',true));
-  
-  head.append(badges);
   view.append(head);
   const notes = el('section','notes-area');
   let readingNotes;
@@ -255,26 +225,22 @@ function buildUnit(u,meta,words) {
     });
     notes.append(readingNotes);
   }
-  const limits = disclosure('注記・利用上の注意', box => {
-    box.append(el('p','',u.volume === 3 ? '第3巻には判読・日付などの未確定事項があります。各記録の留保と利用条件をご確認ください。' : '未確定事項の記録は網羅性が確認されていません。注記がない記事も確定した訳とは限りません。'));
-    addValue(box,'日付の記録',u.date_status); addValue(box,'個別の留保',u.hold_issues); addValue(box,'利用条件・判断',u.limits);
-    if (u.volume === 3) { addValue(box,'未確定事項の記録',u.notes.HOLD); addValue(box,'用途条件',u.notes.用途条件); addValue(box,'利用上の制限',u.locks); addValue(box,'状態フラグ',u.flags); }
-  }); notes.append(limits);
-  const sourceNotes = disclosure('原注・訳注・校訂注',box => {
-    box.append(el('p','hint','異なる段階の注記を区別して掲示しています。原注の記注者や帰属が未確定の場合があります。'));
-    for (const [k,v] of Object.entries(u.notes)) addValue(box,k,v);
-    if (u.source_notes.length) {
-      const group = el('section','source-note-translations'); group.id = 'source-note-translations'; group.setAttribute('tabindex','-1');
-      addValue(group,'原注：原文・原注訳・位置と帰属',u.source_notes); box.append(group);
-    }
-    addValue(box,'訳注',u.translator_notes); addValue(box,'補足注記',u.overlays);
-    box.append(rawDisclosure('原注・訳注の保存キーと値を確認する',{notes:u.notes,source_notes:u.source_notes,translator_notes:u.translator_notes,overlays:u.overlays}));
-  }); notes.append(sourceNotes);
-  notes.append(disclosure('詳細情報：原文への対応位置',box => {
-    box.append(el('p','','訳文に対応する原文の範囲を示します。文字位置は先頭を0とし、終了位置の文字を含めません。位置の対応は、訳語と原文が一語ずつ対応することを意味しません。'));
-    u.spans.forEach(s => record(box,s)); box.append(rawDisclosure('原文参照の保存キーと値',u.spans));
-  }));
-  const tools = el('div','reader-tools'); tools.append(button('注記を読む',() => limits.openAndFocus()),button('原文と訳の対応・注記の説明',() => showAbout('about-qa'))); head.append(tools);
+  const originalNotes = u.source_notes.map(note => [note.source_quote || note.text, note.translation].filter(Boolean).join('　')).filter(Boolean);
+  const translatorNotes = (u.translator_notes || []).filter(note => !note.startsWith('〔原割注訳〕〔原注訳〕〔原頭注訳〕は'));
+  if (originalNotes.length || translatorNotes.length) {
+    notes.append(disclosure('原注・訳注', box => {
+      addNotes(box, '原注', originalNotes);
+      addNotes(box, '訳注', translatorNotes);
+    }));
+  }
+  if (u.hold || u.flags?.date_open || u.limits?.length) {
+    notes.append(disclosure('この記事の未確定事項', box => {
+      if (u.flags?.date_open) box.append(el('p', '', '日付は未確定です。'));
+      const issues = (u.hold_issues || []).filter(item => typeof item === 'string' && /[ぁ-龯]/.test(item));
+      if (u.hold && !issues.length && !u.limits?.length) issues.push('判読・解釈に未確定の箇所があります。');
+      for (const item of new Set([...issues, ...(u.limits || [])])) box.append(el('p', '', item));
+    }));
+  }
   const cols = el('div','columns'), left = el('section','pane source-pane'), right = el('section','pane modern-pane');
   const ll = el('h3','pane-label','原 文'); left.append(ll); u.spans.forEach(s => left.append(sourceBlock(s,words)));
   const rl = el('h3','pane-label','現代語訳'); right.append(rl);
@@ -310,7 +276,7 @@ function buildUnit(u,meta,words) {
 function buildPage(p,meta,words) {
   const view = el('div'), head = el('header','article-head');
   head.append(el('div','article-kicker',`${volumeNames[p.volume]}`),el('h2','',label(meta)));
-  const badges = el('div','badges'); badges.append(badge('半頁全文'),badge(`${p.translation_ids.length}訳単位が参照`)); if (p.hold_unit_ids.length) badges.append(badge('関連する未確定事項あり',true)); head.append(badges); view.append(head);
+  view.append(head);
   if (p.image_reference?.ndl_public_url) { const a=el('a','','NDLデジタルコレクションで原資料を開く ↗'); a.href=p.image_reference.ndl_public_url; a.target='_blank'; a.rel='noopener noreferrer'; head.append(a); }
   const body = el('section','whole-page'); body.append(textBody(p.text,'body-text',words));
   if (p.empty_text) body.append(el('p','empty-text','〔この半頁には原文の文字データがありません。原資料が白紙・欠文であることを示すものではありません。〕'));
@@ -318,7 +284,10 @@ function buildPage(p,meta,words) {
   for (const id of p.translation_ids) links.append(unitButton(id)); related.append(links);
   if (!p.translation_ids.length) related.append(el('p','hint','この半頁を参照する訳単位はありません。架空の訳は補っていません。'));
   body.append(related); view.append(body);
-  const notes = el('section','notes-area'); notes.append(disclosure('出典・原注・未確定事項の詳細',box => { for (const [k,v] of Object.entries(p)) if (k !== 'text') addValue(box,fieldLabels[k] || k,v); const saved = {...p}; delete saved.text; box.append(rawDisclosure('保存キーと値（本文以外）',saved)); })); view.append(notes); return view;
+  if (p.hold_unit_ids.length || p.date_OPEN_unit_ids?.length) {
+    view.append(el('p', 'hint', 'この半頁に対応する記事には未確定の箇所があります。各記事の末尾で確認できます。'));
+  }
+  return view;
 }
 async function choose(id,newKind,scroll = false,write = true,words = [],checkpoint = null) {
   const token = ++generation, meta = (newKind === 'unit' ? byId : pageById).get(id);

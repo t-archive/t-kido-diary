@@ -36,13 +36,13 @@
 .copyright{font:14px/1.8 var(--jp-sans);margin:16px 0 0}.copyright a{color:inherit;text-underline-offset:3px}
 
 /* Featured diary articles */
-.simple-home .home-highlights {
+.simple-home .home-about {
   grid-column: 1 / -1;
 }
-.simple-home .home-highlights h2 {
+.simple-home .home-about h2 {
   margin: 0 0 6px;
 }
-.simple-home .home-highlights p {
+.simple-home .home-about p {
   margin: 0;
 }
 .highlights-main {
@@ -127,3 +127,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+.map-page { height: 100vh; height: 100dvh; display: flex; flex-direction: column; }
+.map-screen { position: relative; flex: 1; min-height: 0; }
+.map-screen .movement-map { width: 100%; height: 100%; min-height: 0; border: 0; }
+.map-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+#map-loading { position: absolute; top: 0; left: 1rem; margin: 0; background: #faf9f5; }
