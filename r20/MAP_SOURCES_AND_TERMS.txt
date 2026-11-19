@@ -1,105 +1,375 @@
-R20 地図・座標・暦・歴史地名資料の典拠と利用条件
-取得・確認日：2026-11-15。
+移動地図の典拠と利用条件
 
-1. 地図素材：Natural Earth ne_50m_land v4.1.0（取得ZIPのVERSION.txt確認）。海岸線・陸地をGeoJSONへ変換し色調と投影を加工。境界・鉄道・道路は不使用。
+木戸孝允の移動地図　出典・帰属表示
+
+地点台帳264件。日記に記された地名に、現代の座標を対応させています。
+
+Natural Earth（109地点）
+海岸線・陸地は縮尺1:50mのデータを表示用に加工。都市には縮尺1:10mの代表点を使用。
+Natural Earth　https://www.naturalearthdata.com/about/terms-of-use/
+Public Domain
+
+Wikidata（54地点）
+都市の位置座標（P625）を地域の代表点に使用。
+Wikidata　https://www.wikidata.org/wiki/Wikidata:Licensing
+CC0　https://creativecommons.org/publicdomain/zero/1.0/
+
+国土地理院ウェブサイト（住所検索）（49地点）
+検索結果を地域表示用に加工。CSISシンプルジオコーディング実験（街区レベル位置参照情報）による。
+国土地理院ウェブサイト（住所検索）　https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html
+東京大学CSIS　https://geocode.csis.u-tokyo.ac.jp/
+
+江戸宿場データセット（19地点）
+ROIS-DS人文学オープンデータ共同利用センター（CODH）作成。上野宿や東海道の宿場などを地域の代表点として表示。
+江戸宿場データセット　https://geoshape.ex.nii.ac.jp/edo/post/
+DOI 10.20676/00000477　https://doi.org/10.20676/00000477
+CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
+
+歴史的行政区域データセットβ版（13地点）
+CODH作成。秋穂・吉岡宿周辺などに使用。仙台の1地点は同資料に基づくGeoLODの地名辞書を経由。
+歴史的行政区域データセットβ版　https://geoshape.ex.nii.ac.jp/city/
+DOI 10.20676/00000447　https://doi.org/10.20676/00000447
+CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
+
+国勢調査町丁・字等別境界データセット（2地点）
+CODHがe-Statの「令和2年国勢調査町丁・字等別境界データ」を加工。木賀・今井町一丁目の図形中心点を地域の代表点として使用。
+国勢調査町丁・字等別境界データセット　https://geoshape.ex.nii.ac.jp/ka/
+DOI 10.20676/00000450　https://doi.org/10.20676/00000450
+CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
+
+『日本歴史地名大系』地名項目データセット（10地点）
+CODH作成。公開座標を歴史地名の代表点として使用。
+『日本歴史地名大系』地名項目データセット　https://geoshape.ex.nii.ac.jp/nrct/
+DOI 10.20676/00000448　https://doi.org/10.20676/00000448
+CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
+
+『日本歴史地名大系』施設・地点項目データセット（1地点）
+CODH作成。高知城の公開座標を高知城下の代表点として使用。
+『日本歴史地名大系』施設・地点項目データセット　https://geoshape.ex.nii.ac.jp/nrct-poi/
+DOI 10.20676/00000456　https://doi.org/10.20676/00000456
+CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
+
+幕末期近世村領域データセット（4地点）
+CODHが本田謙一氏の「幕末期近世村領域データ」を加工。牛窓・野辺地・豊後姫島・深川湯本では、掲載の緯度・経度をそのまま村の代表点に使用。
+幕末期近世村領域データセット　https://geoshape.ex.nii.ac.jp/av/
+CC BY-SA 4.0　https://creativecommons.org/licenses/by-sa/4.0/
+
+大阪府「大阪市中央公会堂と高層ビル群を眺める中之島公園」（1地点）
+府が掲載する公園の参考位置を中之島の代表点に使用。
+大阪府「大阪市中央公会堂と高層ビル群を眺める中之島公園」　https://www.pref.osaka.lg.jp/o130170/kenshi_kikaku/viewspotosakaproject/viewspot-o-kita3.html
+
+青森県「基準地緯度経度一覧」（1地点）
+令和6年の青森市新町一丁目の基準地を青森の代表点に使用。
+青森県「基準地緯度経度一覧」　https://www.pref.aomori.lg.jp/soshiki/kendo/kanri/files/R6_chika_ichi.pdf
+
+Avanti West Coast, Service Facilities Statement（1地点）
+2020年版付録Aのクルー駅の座標を地域の代表点に使用。西経は負の値で表示。
+Avanti West Coast, Service Facilities Statement　https://www.networkrail.co.uk/wp-content/uploads/2020/11/Service-Facilities-Statement-First-Trenitalia-West-Coast-Rail-Limited-Avanti-West-Coast.pdf
+
+暦の月の大小・年初の換算と使節団の日付・訪問地の照合に使用。
+国立国会図書館「日本の暦」　https://www.ndl.go.jp/koyomi/chapter2/s1.html
+HuTime「暦変換（和暦）」　https://www.hutime.jp/basicdata/calendar/calendars/Japanese.html
+アジア歴史資料センター「岩倉使節団」行程年表　https://www.jacar.go.jp/exhibition/iwakura/history/
+
+地域比定と表示方法
+所在地は地域の概算です。前日の位置や別日の参考地点を示す日は、その旨を表示します。船位の解釈と移動経路は本サイトでの推定を含みます。
+
+各地点の参考座標と参照先（台帳順）
+東京　35.687, 139.7495　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+京都　35.0319, 135.7481　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+大阪　34.752, 135.4582　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+神戸　34.68, 135.17　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+横浜　35.4307, 139.602　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+下関　33.9654, 130.9454　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+大津　35.0064, 135.8674　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+静岡　34.9858, 138.3854　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+浜松　34.7181, 137.7327　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+名古屋　35.1569, 136.913　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+広島　34.3898, 132.441　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+長崎　32.765, 129.885　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+熊本　32.8009, 130.7006　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+鹿児島　31.586, 130.5611　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+サンフランシスコ　37.7692, -122.4172　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+シカゴ　41.8319, -87.752　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+オマハ　41.24, -96.01　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ワシントン　38.9015, -77.0114　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ニューヨーク　40.7519, -73.982　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ボストン　42.3319, -71.072　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ナイアガラ　43.0948, -79.0369　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+サラトガ　43.083, -73.785　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ロンドン　51.5019, -0.1187　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+リヴァプール　53.4179, -2.9199　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+マンチェスター　53.5024, -2.2499　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+バーミンガム　52.4769, -1.9219　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ニューカッスル　55.0023, -1.6019　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+グラスゴー　55.8764, -4.2527　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+エディンバラ　55.9483, -3.2191　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ブライトン　50.8303, -0.17　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+パリ　48.8686, 2.3314　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ヴェルサイユ　48.8005, 2.1333　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+リヨン　45.772, 4.8281　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+マルセイユ　43.2919, 5.3731　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ブリュッセル　50.8353, 4.3314　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+アントウェルペン　51.2223, 4.4131　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ハーグ　52.08, 4.27　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ロッテルダム　51.9219, 4.478　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+アムステルダム　52.3519, 4.9147　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ベルリン　52.5238, 13.3996　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ドレスデン　51.05, 13.75　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ミュンヘン　48.1319, 11.573　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+マインツ　49.9825, 8.2732　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+コブレンツ　50.3505, 7.6　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ヴィースバーデン　50.0804, 8.25　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ウィーン　48.202, 16.3647　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ローマ　41.8979, 12.4813　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ナポリ　40.842, 14.2431　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+フィレンツェ　43.78, 11.25　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ミラノ　45.4719, 9.2031　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ジュネーヴ　46.21, 6.14　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ストラスブール　48.58, 7.75　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ポートサイド　31.26, 32.29　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+スエズ　30.005, 32.5499　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ゴール　6.03, 80.24　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+シンガポール　1.295, 103.8539　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+サイゴン　10.782, 106.6931　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+香港　22.3069, 114.1831　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+山口　34.1778, 131.473　https://msearch.gsi.go.jp/address-search/AddressSearch?q=山口県山口市
+萩　34.4081, 131.3992　https://msearch.gsi.go.jp/address-search/AddressSearch?q=山口県萩市
+横須賀　35.2815, 139.6722　https://msearch.gsi.go.jp/address-search/AddressSearch?q=神奈川県横須賀市
+下田　34.6987, 138.9387　https://msearch.gsi.go.jp/address-search/AddressSearch?q=静岡県下田市
+熱海　35.0964, 139.0717　https://msearch.gsi.go.jp/address-search/AddressSearch?q=静岡県熱海市
+箱根　35.2324, 139.1069　https://msearch.gsi.go.jp/address-search/AddressSearch?q=神奈川県箱根町
+三田尻　34.0471, 131.5741　https://msearch.gsi.go.jp/address-search/AddressSearch?q=山口県防府市三田尻
+湯田　34.165, 131.4597　https://msearch.gsi.go.jp/address-search/AddressSearch?q=山口県山口市湯田温泉
+上関　33.8308, 132.1102　https://msearch.gsi.go.jp/address-search/AddressSearch?q=山口県熊毛郡上関町
+奈良　34.685, 135.8047　https://msearch.gsi.go.jp/address-search/AddressSearch?q=奈良県奈良市
+宇治　34.8844, 135.7997　https://msearch.gsi.go.jp/address-search/AddressSearch?q=京都府宇治市
+道明寺　34.5697, 135.6171　https://msearch.gsi.go.jp/address-search/AddressSearch?q=大阪府藤井寺市道明寺
+ポーツマス・サウスシー地域　50.8003, -1.08　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ブラッドフォード　53.8, -1.75　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+サンクトペテルブルク　59.941, 30.3141　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ヴェネツィア　45.4387, 12.335　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+エッセン　51.45, 7.0166　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+アナポリス　38.9783, -76.4925　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ソルトレイクシティ　40.777, -111.932　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+サクラメント　38.577, -121.472　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+函館　41.795, 140.74　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+福島　37.74, 140.47　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+小田原　35.2647, 139.1522　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E5%B0%8F%E7%94%B0%E5%8E%9F%E5%B8%82
+沼津　35.0956, 138.8636　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E9%9D%99%E5%B2%A1%E7%9C%8C%E6%B2%BC%E6%B4%A5%E5%B8%82
+三島　35.1185, 138.9186　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E9%9D%99%E5%B2%A1%E7%9C%8C%E4%B8%89%E5%B3%B6%E5%B8%82
+見附　34.7362, 137.859　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E9%9D%99%E5%B2%A1%E7%9C%8C%E7%A3%90%E7%94%B0%E5%B8%82%E8%A6%8B%E4%BB%98
+赤坂宿（豊川）　34.8586, 137.3044　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E8%B1%8A%E5%B7%9D%E5%B8%82%E8%B5%A4%E5%9D%82%E7%94%BA
+宮宿（熱田）　35.1283, 136.9106　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E7%86%B1%E7%94%B0%E5%8C%BA
+桑名　35.0622, 136.6839　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E4%B8%89%E9%87%8D%E7%9C%8C%E6%A1%91%E5%90%8D%E5%B8%82
+石部　35.0011, 136.0448　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%BB%8B%E8%B3%80%E7%9C%8C%E6%B9%96%E5%8D%97%E5%B8%82%E7%9F%B3%E9%83%A8
+関宿　34.8549, 136.3824　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E4%B8%89%E9%87%8D%E7%9C%8C%E4%BA%80%E5%B1%B1%E5%B8%82%E9%96%A2%E7%94%BA
+伏見　34.9361, 135.7614　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E4%BC%8F%E8%A6%8B%E5%8C%BA
+西宮　34.7377, 135.3418　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E5%85%B5%E5%BA%AB%E7%9C%8C%E8%A5%BF%E5%AE%AE%E5%B8%82
+長府　34.0027, 130.989　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E5%B1%B1%E5%8F%A3%E7%9C%8C%E4%B8%8B%E9%96%A2%E5%B8%82%E9%95%B7%E5%BA%9C
+小郡　34.0982, 131.3947　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E5%B1%B1%E5%8F%A3%E7%9C%8C%E5%B1%B1%E5%8F%A3%E5%B8%82%E5%B0%8F%E9%83%A1%E4%B8%8B%E9%83%B7
+佐々並　34.2659, 131.4562　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E5%B1%B1%E5%8F%A3%E7%9C%8C%E8%90%A9%E5%B8%82%E4%BD%90%E3%80%85%E4%B8%A6
+小倉　33.8808, 130.8735　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E7%A6%8F%E5%B2%A1%E7%9C%8C%E5%8C%97%E4%B9%9D%E5%B7%9E%E5%B8%82%E5%B0%8F%E5%80%89%E5%8C%97%E5%8C%BA
+室積　33.9313, 131.9736　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E5%B1%B1%E5%8F%A3%E7%9C%8C%E5%85%89%E5%B8%82%E5%AE%A4%E7%A9%8D
+防府　34.0514, 131.5628　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E5%B1%B1%E5%8F%A3%E7%9C%8C%E9%98%B2%E5%BA%9C%E5%B8%82
+掛川　34.7688, 137.9984　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E9%9D%99%E5%B2%A1%E7%9C%8C%E6%8E%9B%E5%B7%9D%E5%B8%82
+藤枝　34.8675, 138.2578　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E9%9D%99%E5%B2%A1%E7%9C%8C%E8%97%A4%E6%9E%9D%E5%B8%82
+吉原（富士市地域）　35.1613, 138.6762　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E9%9D%99%E5%B2%A1%E7%9C%8C%E5%AF%8C%E5%A3%AB%E5%B8%82
+岡崎　34.9548, 137.1731　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%B2%A1%E5%B4%8E%E5%B8%82
+新居　34.6878, 137.5732　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E9%9D%99%E5%B2%A1%E7%9C%8C%E6%B9%96%E8%A5%BF%E5%B8%82%E6%96%B0%E5%B1%85%E7%94%BA%E6%96%B0%E5%B1%85
+大磯　35.3068, 139.3114　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E5%A4%A7%E7%A3%AF%E7%94%BA
+藤沢　35.3389, 139.4912　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E8%97%A4%E6%B2%A2%E5%B8%82
+草加　35.8254, 139.8054　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E5%9F%BC%E7%8E%89%E7%9C%8C%E8%8D%89%E5%8A%A0%E5%B8%82
+小山　36.3145, 139.8008　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%A0%83%E6%9C%A8%E7%9C%8C%E5%B0%8F%E5%B1%B1%E5%B8%82
+佐久山　36.7999, 140.0133　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%A0%83%E6%9C%A8%E7%9C%8C%E5%A4%A7%E7%94%B0%E5%8E%9F%E5%B8%82%E4%BD%90%E4%B9%85%E5%B1%B1
+水沢　39.1391, 141.1236　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E5%B2%A9%E6%89%8B%E7%9C%8C%E5%A5%A5%E5%B7%9E%E5%B8%82%E6%B0%B4%E6%B2%A2
+三戸　40.3784, 141.2587　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E9%9D%92%E6%A3%AE%E7%9C%8C%E4%B8%89%E6%88%B8%E7%94%BA
+五戸　40.5311, 141.3078　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E9%9D%92%E6%A3%AE%E7%9C%8C%E4%BA%94%E6%88%B8%E7%94%BA
+七戸　40.7447, 141.1578　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E9%9D%92%E6%A3%AE%E7%9C%8C%E4%B8%83%E6%88%B8%E7%94%BA
+鳥羽　34.4813, 136.8434　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E4%B8%89%E9%87%8D%E7%9C%8C%E9%B3%A5%E7%BE%BD%E5%B8%82
+江の島地域　35.3, 139.4822　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E8%97%A4%E6%B2%A2%E5%B8%82%E6%B1%9F%E3%81%AE%E5%B3%B6
+船木　34.0522, 131.2072　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E5%B1%B1%E5%8F%A3%E7%9C%8C%E5%AE%87%E9%83%A8%E5%B8%82%E8%88%B9%E6%9C%A8
+西市　34.2023, 131.0754　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E5%B1%B1%E5%8F%A3%E7%9C%8C%E4%B8%8B%E9%96%A2%E5%B8%82%E8%B1%8A%E7%94%B0%E7%94%BA%E8%A5%BF%E5%B8%82
+草津宿（滋賀）　35.0132, 135.96　https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%BB%8B%E8%B3%80%E7%9C%8C%E8%8D%89%E6%B4%A5%E5%B8%82
+ケルン　50.93195, 6.948059　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+クルー　53.0896, -2.4336　https://www.networkrail.co.uk/wp-content/uploads/2020/11/Service-Facilities-Statement-First-Trenitalia-West-Coast-Rail-Limited-Avanti-West-Coast.pdf
+ローセンダール　51.5333, 4.45　https://www.wikidata.org/wiki/Q6903267
+上野宿（河芸）　34.792671, 136.544952　https://geoshape.ex.nii.ac.jp/edo/post/R503/
+厚狭（宿泊地推定）　34.053097, 131.164917　https://msearch.gsi.go.jp/address-search/AddressSearch?q=山口県山陽小野田市厚狭
+オークランド　37.768921, -122.221103　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ストックトン　37.958134, -121.289739　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+リノ　39.529976, -119.820010　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+オグデン　41.232379, -111.968034　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+グリーンリバー（ワイオミング）　41.514558, -109.464983　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+シャイアン　41.140007, -104.819711　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+シドニー（ネブラスカ）　41.139800, -102.978273　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ノースプラット　41.136286, -100.770501　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ピッツバーグ　40.431945, -80.001931　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+シラキュース　43.049994, -76.150014　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+フィラデルフィア　40.001919, -75.171942　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ボルティモア　39.301936, -76.621931　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ニューアーク　40.700421, -74.170005　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+グリーノック　55.933290, -4.750031　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+シェフィールド　53.366677, -1.499997　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ストーク＝オン＝トレント　53.000368, -2.180007　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+チェスター　53.200020, -2.919987　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ダブリン　53.335007, -6.250852　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ドーバー　51.133712, 1.300013　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+カレー　50.950416, 1.833314　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ヘント　51.029998, 3.700022　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+リエージュ　50.629996, 5.580011　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+モンス　50.445999, 3.939004　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ポツダム　52.400405, 13.069993　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+カリーニングラード（旧ケーニヒスベルク）　54.700006, 20.497343　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+カウナス　54.950404, 23.880031　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+プスコフ　57.829996, 28.329940　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ルーガ　58.736349, 29.838995　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+コルピノ　59.730009, 30.650005　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ボローニャ　44.500422, 11.340021　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+コモ　45.810006, 9.080004　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ローザンヌ周辺　46.530427, 6.650023　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ベルン　46.916683, 7.466976　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+バーゼル　47.580389, 7.590017　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+アデン　12.779723, 45.009490　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ロチェスター（ニューヨーク）　43.172372, -77.621896　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+スプリングフィールド（マサチューセッツ）　42.120025, -72.579999　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+ウィルミントン（デラウェア）　39.746268, -75.546898　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+コルファクス　39.097222, -120.953889　https://www.wikidata.org/wiki/Q2190495?oldid=2516905408
+ウェストポイント　41.395000, -73.955000　https://www.wikidata.org/wiki/Q679753?oldid=2558979096
+ブランドフォード周辺　50.861500, -2.162700　https://www.wikidata.org/wiki/Q644530?oldid=2552972698
+ウスター　52.191111, -2.220556　https://www.wikidata.org/wiki/Q1646181?oldid=2563761057
+ヘイスティングス　50.855000, 0.583333　https://www.wikidata.org/wiki/Q29245?oldid=2568862497
+キングスタウン（現ダン・レアリー）　53.300000, -6.140000　https://www.wikidata.org/wiki/Q745989?oldid=2569453670
+コーヴ港周辺　51.851000, -8.296700　https://www.wikidata.org/wiki/Q733093?oldid=2569457082
+ビーストン周辺　53.116667, -2.683333　https://www.wikidata.org/wiki/Q1791022?oldid=2569298492
+バーンティスランド　56.059444, -3.232500　https://www.wikidata.org/wiki/Q1011521?oldid=2569250878
+ホリーヘッド　53.316667, -4.633333　https://www.wikidata.org/wiki/Q257446?oldid=2569057630
+バクストン　53.259000, -1.911000　https://www.wikidata.org/wiki/Q971223?oldid=2569402685
+セントヘレンズ　53.454000, -2.746000　https://www.wikidata.org/wiki/Q179206?oldid=2563703316
+ソルテア　53.837170, -1.790260　https://www.wikidata.org/wiki/Q838920?oldid=2562267077
+ノースウィッチ　53.259000, -2.518000　https://www.wikidata.org/wiki/Q2009813?oldid=2569248677
+ペニキュイック　55.826000, -3.220000　https://www.wikidata.org/wiki/Q1011428?oldid=2569250853
+グレートリー　51.175500, -1.604510　https://www.wikidata.org/wiki/Q5597671?oldid=2445679158
+フォンテーヌブロー　48.408889, 2.701667　https://www.wikidata.org/wiki/Q182872?oldid=2563664953
+サン＝ジェルマン＝アン＝レー　48.896389, 2.090556　https://www.wikidata.org/wiki/Q185075?oldid=2558515353
+ライデン　52.160000, 4.490000　https://www.wikidata.org/wiki/Q43631?oldid=2568600412
+デルフト　52.011667, 4.359167　https://www.wikidata.org/wiki/Q690?oldid=2565555403
+パドヴァ　45.407778, 11.873333　https://www.wikidata.org/wiki/Q617?oldid=2562593672
+ウィンザー　51.483333, -0.600000　https://www.wikidata.org/wiki/Q464955?oldid=2569441204
+ローレンス（マサチューセッツ）　42.706944, -71.163333　https://www.wikidata.org/wiki/Q49163?oldid=2564985201
+ハリファックス（英国）　53.725000, -1.863000　https://www.wikidata.org/wiki/Q826561?oldid=2569523704
+ポンペイ　40.750556, 14.489722　https://www.wikidata.org/wiki/Q43332?oldid=2562918462
+ラストロップ　37.816944, -121.288611　https://www.wikidata.org/wiki/Q986862?oldid=2516729863
+アムステルダム（ニューヨーク州）　42.943300, -74.190300　https://www.wikidata.org/wiki/Q478456?oldid=2568711053
+ホワイトホール（ニューヨーク州）　43.550000, -73.400000　https://www.wikidata.org/wiki/Q3461864?oldid=2528881771
+ラトランド（バーモント州）　43.608900, -72.979700　https://www.wikidata.org/wiki/Q25893?oldid=2517001516
+フィッチバーグ　42.583333, -71.802778　https://www.wikidata.org/wiki/Q54182?oldid=2561687578
+チャールズタウン（ボストン）　42.375278, -71.064444　https://www.wikidata.org/wiki/Q1756813?oldid=2555241770
+ニューブランズウィック（ニュージャージー州）　40.486667, -74.444444　https://www.wikidata.org/wiki/Q138338?oldid=2543404901
+ラーウェイ　40.607222, -74.281111　https://www.wikidata.org/wiki/Q1003082?oldid=2530387766
+エリザベス（ニュージャージー州）　40.662222, -74.209167　https://www.wikidata.org/wiki/Q138311?oldid=2530079553
+ミルブレー周辺　37.600833, -122.401389　https://www.wikidata.org/wiki/Q1011108?oldid=2561102750
+ベルモント（カリフォルニア）　37.518056, -122.291667　https://www.wikidata.org/wiki/Q816099?oldid=2549255886
+ウィガン　53.544722, -2.631667　https://www.wikidata.org/wiki/Q208143?oldid=2568922912
+プレストン　53.759444, -2.698056　https://www.wikidata.org/wiki/Q184090?oldid=2525224453
+ランカスター（英国）　54.048889, -2.801389　https://www.wikidata.org/wiki/Q205905?oldid=2550618300
+ダービー　52.921667, -1.476667　https://www.wikidata.org/wiki/Q43475?oldid=2569305266
+バートン＝アポン＝トレント　52.801944, -1.636667　https://www.wikidata.org/wiki/Q1000597?oldid=2569290703
+チズルハースト　51.415000, 0.078900　https://www.wikidata.org/wiki/Q122917?oldid=2497199951
+ウーリッジ　51.491667, 0.066667　https://www.wikidata.org/wiki/Q1006232?oldid=2549915765
+サン＝クルー　48.846389, 2.215278　https://www.wikidata.org/wiki/Q189153?oldid=2563729078
+ワーテルロー　50.716667, 4.383333　https://www.wikidata.org/wiki/Q179034?oldid=2548901812
+スラン（リエージュ近郊）　50.598600, 5.512200　https://www.wikidata.org/wiki/Q194037?oldid=2565609735
+ラン（フランス）　49.564444, 3.620556　https://www.wikidata.org/wiki/Q167141?oldid=2563653319
+チェルヌイシェフスコエ（旧アイドクーネン）　54.633333, 22.733333　https://www.wikidata.org/wiki/Q655358?oldid=2563698393
+ヴィルバリス・キーバルタイ地域　54.638889, 22.755556　https://www.wikidata.org/wiki/Q1004295?oldid=2569251825
+トチェフ（旧ディルシャウ）　54.091111, 18.786389　https://www.wikidata.org/wiki/Q474697?oldid=2517706734
+モダーヌ　45.201389, 6.673333　https://www.wikidata.org/wiki/Q537113?oldid=2563659070
+フライベルク鉱山地域　50.911944, 13.342778　https://www.wikidata.org/wiki/Q14819?oldid=2562557731
+ビショップトン周辺　55.908400, -4.505180　https://www.wikidata.org/wiki/Q2098147?oldid=2550096278
+カーライル　54.879995, -2.929987　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+サウサンプトン　50.900031, -1.399977　https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+牛窓　34.61861, 134.1612　https://geoshape.ex.nii.ac.jp/av/resource/K38/K38G05S00014.html
+野辺地　40.8648, 141.1245　https://geoshape.ex.nii.ac.jp/av/resource/K01/K01G04S00001.html
+豊後姫島　33.7239, 131.6509　https://geoshape.ex.nii.ac.jp/av/resource/K59/K59G01S00101.html
+天保山周辺　34.65641, 135.433533　https://geoshape.ex.nii.ac.jp/nrct/resource/28/280000234400.html
+大阪・中之島　34.693213, 135.50495　https://www.pref.osaka.lg.jp/o130170/kenshi_kikaku/viewspotosakaproject/viewspot-o-kita3.html
+東京・築地　35.662876, 139.767883　https://geoshape.ex.nii.ac.jp/nrct/resource/13/130000112300.html
+青森　40.826865, 140.737693　https://www.pref.aomori.lg.jp/soshiki/kendo/kanri/files/R6_chika_ichi.pdf
+箱根・木賀　35.249284, 139.052064　https://geoshape.ex.nii.ac.jp/ka/resource/14/143820030.html
+深川湯本　34.32865, 131.1721　https://geoshape.ex.nii.ac.jp/av/resource/K52/K52G03S00008.html
+花巻　39.388609, 141.116854　https://geoshape.ex.nii.ac.jp/city/resource/03205A1968.html
+二本松　37.584783, 140.431199　https://geoshape.ex.nii.ac.jp/city/resource/07210A1968.html
+白石　38.002467, 140.619888　https://geoshape.ex.nii.ac.jp/city/resource/04206A1968.html
+塩竈　38.31436, 141.02203　https://geoshape.ex.nii.ac.jp/city/resource/04203A1968.html
+津　34.718563, 136.505443　https://geoshape.ex.nii.ac.jp/city/resource/24201A1968.html
+流山　35.856287, 139.902586　https://geoshape.ex.nii.ac.jp/city/resource/12220A1968.html
+伊勢　34.487506, 136.709286　https://geoshape.ex.nii.ac.jp/city/resource/24203A1968.html
+利府　38.330355, 140.975793　https://geoshape.ex.nii.ac.jp/city/resource/04406A1968.html
+松島　38.37083, 141.0588　https://geoshape.ex.nii.ac.jp/nrct/resource/04/040000069200.html
+土山　34.935011, 136.282066　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+幸手　36.07786, 139.7215　https://geoshape.ex.nii.ac.jp/nrct/resource/11/110000347100.html
+築館　38.73254, 141.0206　https://geoshape.ex.nii.ac.jp/nrct/resource/04/040000168400.html
+沼宮内　39.972, 141.2236　https://geoshape.ex.nii.ac.jp/nrct/resource/03/030000122800.html
+蘆野　36.990052, 140.164776　https://geoshape.ex.nii.ac.jp/nrct/resource/09/090000021100.html
+桑野村　37.395679, 140.352384　https://geoshape.ex.nii.ac.jp/nrct/resource/07/070000162400.html
+神奈川　35.472774, 139.632598　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+蒲原　35.120055, 138.60552　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+江尻　35.018711, 138.485264　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+丸子　34.949634, 138.340807　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+岡部　34.918878, 138.282505　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+舞阪　34.685634, 137.613374　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+池鯉鮒　35.008178, 137.041147　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+鳴海　35.081368, 136.94826　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+四日市　34.969814, 136.62521　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+石薬師　34.9044, 136.548153　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+坂下　34.888536, 136.354324　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+水口　34.966059, 136.181884　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+品川　35.619145, 139.745041　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+川崎　35.53384, 139.704638　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+保土ヶ谷　35.443982, 139.595476　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+戸塚　35.397623, 139.530575　https://geoshape.ex.nii.ac.jp/edo/post/R001/
+呼子港　33.544136, 129.891794　https://geoshape.ex.nii.ac.jp/nrct/resource/42/420000132800.html
+御手洗　34.179613, 132.867947　https://geoshape.ex.nii.ac.jp/nrct/resource/35/350000169800.html
+宇都宮　36.561757, 139.877222　https://geoshape.ex.nii.ac.jp/edo/post/R004/
+盛岡　39.701795, 141.154183　https://geoshape.ex.nii.ac.jp/city/resource/03201A1968.html
+岩沼　38.104303, 140.869949　https://geoshape.ex.nii.ac.jp/city/resource/04381A1968.html
+仙台　38.268008, 140.869617　https://geolod.ex.nii.ac.jp/resource/NKCEEe
+秋穂　34.014455, 131.437433　https://geoshape.ex.nii.ac.jp/city/resource/35B0030007.html
+今井村　34.507578, 135.788532　https://geoshape.ex.nii.ac.jp/ka/resource/29/29205046001.html
+高知　33.560812, 133.531484　https://geoshape.ex.nii.ac.jp/nrct-poi/resource/40/400000101700.html
+吉岡宿　38.437330, 140.886309　https://geoshape.ex.nii.ac.jp/city/resource/04421A1968.html
+
+地名比定・暦・座標・書体を照合した資料と各提供元の説明
 https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_land.zip
 https://www.naturalearthdata.com/downloads/50m-physical-vectors/
 https://www.naturalearthdata.com/about/terms-of-use/
-Natural EarthはPublic Domain。動画・HTMLにも帰属を明記。現代海岸線は歴史行政区・交通網の復元ではない。
-
-2. 都市代表座標：Natural Earth ne_10m_populated_places v5.1.2。NAME/ADM0NAME/NE_ID/LATITUDE/LONGITUDEを採用。現代都市のラベル点を史跡の座標へ読み替えず、半径15～20km等の地域概算に利用。
 https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_populated_places.zip
 https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
-
-3. 日本の補助座標：出典・国土地理院住所検索結果を加工して作成。
 https://msearch.gsi.go.jp/address-search/AddressSearch
-各検索語・応答はmaps/gsi/、採用結果とURLは座標台帳。検索結果をそのまま歴史施設の精密座標にしない。小郡のように検索が複数町域へ分かれるものは自動採用しない。
 https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html
-確認した現行規約は公共データ利用規約第1.0版（PDL1.0）への準拠を説明し、出典と加工の明記を求める。本制作の加工・概算は国土地理院の歴史地名判断を示すものではない。
-
-4. 暦：国立国会図書館「日本の暦／大小暦」、1868～1872年の月大小・閏月。
 https://www.ndl.go.jp/koyomi/chapter2/s1.html
-HuTime「和暦」：内田正男編著『日本暦日原典 第四版』等を典拠とする換算サービスを利用し年初を照合。書籍そのものの新規実見とは区別する。
 https://www.hutime.jp/basicdata/calendar/calendars/Japanese.html
 https://www.hutime.jp/basicdata/calendar/form.html
-年初応答：1868-01-25／1869-02-11／1870-02-01／1871-02-19／1872-02-09。明治5年12月2日は1872-12-31。月表はdata/R20_CALENDAR_MONTHS.csv。
-国立天文台のFAQでも明治3年元日＝2月1日、明治4年元日＝2月19日を確認。
 https://www.nao.ac.jp/faq/a0304.html
-
-5. 京都土手町寓の地域対応：京都市「明治天皇行幸所木戸邸」、木戸孝允旧邸案内。
 https://www2.city.kyoto.lg.jp/somu/rekishi/fm/ishibumi/html/na103.html
 https://www.city.kyoto.lg.jp/gyozai/page/0000329188.html
-京都別邸・土手町の対応を補助確認。正確な室・建物点は未採用。
-
-6. ワシントンのWormleyホテル呼称の補助：DC政府の歴史地区・史跡資料。原記ヲームリハウス等は当該滞在文脈に限定し、現代建物点を採らない。
 https://planning.dc.gov/sites/default/files/dc/sites/op/publication/attachments/AAHT%20Text%20Final%20for%20web.pdf
 https://planning.dc.gov/sites/default/files/dc/sites/op/publication/attachments/Fifteenth%20Street%20Financial%20Historic%20District%20Amended%20Nomination_0.pdf
-
-7. フォント：Noto Sans CJK。配布物はFONT_LICENSE.txtを同梱。本文・地図以外の生成画像は不使用。
-
-
-R04追加の座標資料（2026-11-15確認）
-ケルン：Natural Earth 10m populated places v5.1.2、ne_id1159148451、Public Domain。
-クルー：Avanti West Coast Service Facilities Statement v1 2020-01-20、Network Rail公開PDF、Appendix A通算6頁 CRE行。
 https://www.networkrail.co.uk/wp-content/uploads/2020/11/Service-Facilities-Statement-First-Trenitalia-West-Coast-Rail-Limited-Avanti-West-Coast.pdf
-公開駅座標という事実データだけを地域概算点として転記し、PDF・図版の再配布は行わない。列題とN/Wの向きが逆のため方位を採用。別のHistoric England MCH5726の近傍座標とも整合（地域代表点のため相違を精密誤差としない）。
 https://historicengland.org.uk/listing/heritage-gateway/results/record/1f885988-2bef-42e5-ba07-140dde779795/MCH5726
-ローセンダール：Wikidata Q6903267/P625、51°32′N・4°27′E。分単位から十進度への換算。構造化データはCC0。
 https://www.wikidata.org/wiki/Q6903267
 https://www.wikidata.org/wiki/Wikidata:Licensing
-数値の引用と取得日をsources/R04_ADDITIONAL_GEO_SOURCES.jsonに記録。歴史施設の精密座標ではない。
-
-
-R05追加・2026-11-15確認資料からの採用
-上野宿：『江戸宿場データセット』（ROIS-DS人文学オープンデータ共同利用センター作成）、CC BY 4.0。R503-004の34.792671,136.544952を宿泊地域の概算表示に加工。
 https://geoshape.ex.nii.ac.jp/edo/post/R503/
 https://creativecommons.org/licenses/by/4.0/
-地名補助：津市「歴史散歩55 上野宿の面影」、広報津2010-12-01号・再掲PDFp29。現代PDF・図版は再配布しない。
 https://www.info.city.tsu.mie.jp/_res/projects/default_project/_page_/001/004/601/rekishisanpo55.pdf
-厚狭点：国土地理院住所検索APIの「山口県山陽小野田市厚狭」応答1件、34.053097,131.164917を地域表示に加工。座標桁数を歴史的敷地の精度に読み替えない。出典：国土地理院ウェブサイト。住所検索の外部連携提供元の条件がある場合はその条件を優先。
 https://msearch.gsi.go.jp/address-search/AddressSearch?q=山口県山陽小野田市厚狭
-国土地理院コンテンツ利用規約：2025-11-20改正・PDL1.0、出典と加工表示、外部連携には提供元規約が優先。
 https://web2.gsi.go.jp/kikakuchousei/kikakuchousei40182.html
-厚狭・枝村家：広報さんようおのだ2020-06-15 No366 p4。地名と家の存在を補助し、木戸の泊建物を特定するものではない。現代PDF・図版は再配布しない。
 https://www.city.sanyo-onoda.lg.jp/uploaded/attachment/37354.pdf
-刊本：妻木忠太編『木戸孝允日記』第3、早川良吉1933年刊。NDL DOI10.11501/1075415由来のCommons公開複製。PDF21/68/69ページ、刊本p37/131/132を実見。PD-Japan／PD-scan表示。必要3ページと字形拡大を同梱。手稿原字は未照合。
 https://commons.wikimedia.org/wiki/File:NDL1075415_木戸孝允日記_第3_part1.pdf
-詳細書誌・範囲・限界・取得ファイルハッシュ・API応答はsources/REVIEW_RV02。原文校訂は行わず、地域比定のみ条件付き採用。
-
-
-R06公開条件再確認・2026-11-15
-Natural Earth: Public Domain。CC BY 4.0の江戸宿場座標やSIL OFLの書体を含め、全素材がPDという表示はしない。
-CC BY 4.0は共有・改変・営利利用を認め、出典・ライセンスリンク・変更表示を求める。動画の帰属カードとHTMLへリンク・加工表示を補う。
 https://creativecommons.org/licenses/by/4.0/deed.ja
-国土地理院APIに関する公式説明：地理院地図の住所検索はCSISシンプルジオコーディングを利用（2015-03-23回答）。
 https://github.com/gsi-cyberjapan/gsimaps/issues/29
-CSIS参加規約第4条：図面内または説明文に「CSISシンプルジオコーディング実験（街区レベル位置参照情報）による」と記載。リンクはhttps://geocode.csis.u-tokyo.ac.jp/ 。R06では帰属カード・HTML・説明文案へ追加。
 https://geocode.csis.u-tokyo.ac.jp/home/simple-geocoding/simple-geocoding-tems-of-use/
-国土地理院ハザードマップ側の利用条件も住所検索結果（地理院地図、協力:東大CSIS）を外部連携の例として示す。
 https://disaportal.gsi.go.jp/hazardmap/copyright/copyright.html
-Wikidata構造化データはCC0、その他の名前空間の本文は別ライセンス。
-https://www.wikidata.org/wiki/Wikidata:Licensing
-Noto書体は同梱FONT_LICENSEを維持。OFLで作成した文書・画像等の利用とフォントファイル再配布を区別。
 https://openfontlicense.org/
-原文・翻訳・研究成果等を含む全研究ZIPの公開再配布許諾は未確認。動画・地図の素材利用条件をZIP全体の許諾に読み替えない。公開・投稿を実行したものではない。
-
-R07追加分
-追加都市点：Natural Earth v5.1.2（Public Domain）、Wikidata P625構造化データ（CC0）。各source_urlにrevision IDを記録し、取得した座標・版の事実スナップショットをsources/R07_WIKIDATA_COORDINATE_FACTS.jsonへ保存。
-https://www.wikidata.org/wiki/Wikidata:Licensing
-使節団比較：JACAR岩倉使節団行程年表。日付・地名・交通等の事実のみ抽出。現代の説明全文・画像は複製しない。取得版のハッシュをR07_JACAR_PROVENANCE.jsonに記録。
 https://www.jacar.go.jp/exhibition/iwakura/history/
-船位：原記を元にした研究上の表示仮説であり、海図・航海原簿の取得や数値の正式採用を意味しない。
-
-行程①追加の地域参考点は各行の source_url に記載。江戸宿場データセット、歴史的行政区域データセットβ版、『日本歴史地名大系』地名項目データセット（CODH作成、doi:10.20676/00000448）、GeoLOD。Geoshape https://geoshape.ex.nii.ac.jp/ 。上記各データセットの提供条件に従う（CC BY 4.0）。建物位置や船の碇泊位置は表さない。
-行程③の新規参考点3件は各行に出典URL。秋穂は歴史的行政区域データセットβ版、今井村は国勢調査町丁・字等別境界データセット、高知城下は『日本歴史地名大系』施設・地点項目データセット（CODH作成）doi:10.20676/00000456 の高知城を地域の代表点に使用。建物への訪問・宿の所在地を示さない。
-④ 吉岡宿の比定資料 大和町観光物産協会 https://www.taiwa-tp.jp/2025_06-16_yoshioka_tanbokai/ 。地域の参考点は歴史的行政区域データセットβ版（CODH作成）大和町 https://geoshape.ex.nii.ac.jp/city/resource/04421A1968.html 。
-
-地域代表点に利用したCODHの資料
-
-『国勢調査町丁・字等別境界データセット』（CODH作成、DOI 10.20676/00000450）。CODHがe-Statの「令和2年国勢調査町丁・字等別境界データ」を加工。本サイトでは箱根・木賀などの地域代表点として使用。
-資料　https://geoshape.ex.nii.ac.jp/ka/
-ライセンス　CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
-
-『歴史的行政区域データセットβ版』（CODH作成、DOI 10.20676/00000447）。本サイトでは秋穂・吉岡宿周辺などの地域代表点として使用。
-資料　https://geoshape.ex.nii.ac.jp/city/
-ライセンス　CC BY 4.0　https://creativecommons.org/licenses/by/4.0/

@@ -1,32 +1,70 @@
-地図：Natural Earth（Public Domain）
-https://www.naturalearthdata.com/about/terms-of-use/
+木戸孝允の移動地図　出典・帰属表示
 
-上野宿：『江戸宿場データセット』（ROIS-DS人文学オープンデータ共同利用センター作成）、CC BY 4.0
-https://geoshape.ex.nii.ac.jp/edo/post/R503/
-https://creativecommons.org/licenses/by/4.0/
-座標を宿泊地域の表示用代表点に加工。
+地点台帳264件。日記に記された地名に、現代の座標を対応させています。
 
-日本の補助座標：国土地理院ウェブサイトの住所検索結果を地域表示用に加工。
-https://msearch.gsi.go.jp/address-search/AddressSearch
-CSISシンプルジオコーディング実験（街区レベル位置参照情報）による。
-https://geocode.csis.u-tokyo.ac.jp/
+Natural Earth（109地点）
+海岸線・陸地は縮尺1:50mのデータを表示用に加工。都市には縮尺1:10mの代表点を使用。
+Natural Earth　https://www.naturalearthdata.com/about/terms-of-use/
+Public Domain
 
-ローセンダール等の補助座標：Wikidata構造化データ（CC0）。そのほかの座標典拠は同梱台帳参照。
+Wikidata（54地点）
+都市の位置座標（P625）を地域の代表点に使用。
+Wikidata　https://www.wikidata.org/wiki/Wikidata:Licensing
+CC0　https://creativecommons.org/publicdomain/zero/1.0/
 
-歴史地名の比定と表示上の前日位置継続はR20による加工・研究判断。
-採用座標のない日は前日の表示位置を継続。灰色の白抜きピンは、その日の滞在の実証ではありません。
-現代海岸線の概略図を使用し、当時の行政区・交通網を復元するものではありません。
+国土地理院ウェブサイト（住所検索）（49地点）
+検索結果を地域表示用に加工。CSISシンプルジオコーディング実験（街区レベル位置参照情報）による。
+国土地理院ウェブサイト（住所検索）　https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html
+東京大学CSIS　https://geocode.csis.u-tokyo.ac.jp/
 
-R07追加：Additional town coordinates from Natural Earth and Wikidata structured data (CC0). Delegation itinerary comparison: Japan Center for Asian Historical Records. Marine display assumptions and source-linkage corrections by R20. Private research edition; not published.
+江戸宿場データセット（19地点）
+ROIS-DS人文学オープンデータ共同利用センター（CODH）作成。上野宿や東海道の宿場などを地域の代表点として表示。
+江戸宿場データセット　https://geoshape.ex.nii.ac.jp/edo/post/
+DOI 10.20676/00000477　https://doi.org/10.20676/00000477
+CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
 
-R08: review treatments and interface changes; private research. Existing attribution and license conditions retained.
+歴史的行政区域データセットβ版（13地点）
+CODH作成。秋穂・吉岡宿周辺などに使用。仙台の1地点は同資料に基づくGeoLODの地名辞書を経由。
+歴史的行政区域データセットβ版　https://geoshape.ex.nii.ac.jp/city/
+DOI 10.20676/00000447　https://doi.org/10.20676/00000447
+CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
 
-地域代表点に利用したCODHの資料
+国勢調査町丁・字等別境界データセット（2地点）
+CODHがe-Statの「令和2年国勢調査町丁・字等別境界データ」を加工。木賀・今井町一丁目の図形中心点を地域の代表点として使用。
+国勢調査町丁・字等別境界データセット　https://geoshape.ex.nii.ac.jp/ka/
+DOI 10.20676/00000450　https://doi.org/10.20676/00000450
+CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
 
-『国勢調査町丁・字等別境界データセット』（CODH作成、DOI 10.20676/00000450）。CODHがe-Statの「令和2年国勢調査町丁・字等別境界データ」を加工。本サイトでは箱根・木賀などの地域代表点として使用。
-資料　https://geoshape.ex.nii.ac.jp/ka/
-ライセンス　CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
+『日本歴史地名大系』地名項目データセット（10地点）
+CODH作成。公開座標を歴史地名の代表点として使用。
+『日本歴史地名大系』地名項目データセット　https://geoshape.ex.nii.ac.jp/nrct/
+DOI 10.20676/00000448　https://doi.org/10.20676/00000448
+CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
 
-『歴史的行政区域データセットβ版』（CODH作成、DOI 10.20676/00000447）。本サイトでは秋穂・吉岡宿周辺などの地域代表点として使用。
-資料　https://geoshape.ex.nii.ac.jp/city/
-ライセンス　CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
+『日本歴史地名大系』施設・地点項目データセット（1地点）
+CODH作成。高知城の公開座標を高知城下の代表点として使用。
+『日本歴史地名大系』施設・地点項目データセット　https://geoshape.ex.nii.ac.jp/nrct-poi/
+DOI 10.20676/00000456　https://doi.org/10.20676/00000456
+CC BY 4.0　https://creativecommons.org/licenses/by/4.0/
+
+幕末期近世村領域データセット（4地点）
+CODHが本田謙一氏の「幕末期近世村領域データ」を加工。牛窓・野辺地・豊後姫島・深川湯本では、掲載の緯度・経度をそのまま村の代表点に使用。
+幕末期近世村領域データセット　https://geoshape.ex.nii.ac.jp/av/
+CC BY-SA 4.0　https://creativecommons.org/licenses/by-sa/4.0/
+
+大阪府「大阪市中央公会堂と高層ビル群を眺める中之島公園」（1地点）
+府が掲載する公園の参考位置を中之島の代表点に使用。
+大阪府「大阪市中央公会堂と高層ビル群を眺める中之島公園」　https://www.pref.osaka.lg.jp/o130170/kenshi_kikaku/viewspotosakaproject/viewspot-o-kita3.html
+
+青森県「基準地緯度経度一覧」（1地点）
+令和6年の青森市新町一丁目の基準地を青森の代表点に使用。
+青森県「基準地緯度経度一覧」　https://www.pref.aomori.lg.jp/soshiki/kendo/kanri/files/R6_chika_ichi.pdf
+
+Avanti West Coast, Service Facilities Statement（1地点）
+2020年版付録Aのクルー駅の座標を地域の代表点に使用。西経は負の値で表示。
+Avanti West Coast, Service Facilities Statement　https://www.networkrail.co.uk/wp-content/uploads/2020/11/Service-Facilities-Statement-First-Trenitalia-West-Coast-Rail-Limited-Avanti-West-Coast.pdf
+
+暦の月の大小・年初の換算と使節団の日付・訪問地の照合に使用。
+国立国会図書館「日本の暦」　https://www.ndl.go.jp/koyomi/chapter2/s1.html
+HuTime「暦変換（和暦）」　https://www.hutime.jp/basicdata/calendar/calendars/Japanese.html
+アジア歴史資料センター「岩倉使節団」行程年表　https://www.jacar.go.jp/exhibition/iwakura/history/
