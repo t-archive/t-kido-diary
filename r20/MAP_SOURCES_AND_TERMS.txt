@@ -1,0 +1,95 @@
+R20 地図・座標・暦・歴史地名資料の典拠と利用条件
+取得・確認日：2026-11-15。
+
+1. 地図素材：Natural Earth ne_50m_land v4.1.0（取得ZIPのVERSION.txt確認）。海岸線・陸地をGeoJSONへ変換し色調と投影を加工。境界・鉄道・道路は不使用。
+https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_land.zip
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/
+https://www.naturalearthdata.com/about/terms-of-use/
+Natural EarthはPublic Domain。動画・HTMLにも帰属を明記。現代海岸線は歴史行政区・交通網の復元ではない。
+
+2. 都市代表座標：Natural Earth ne_10m_populated_places v5.1.2。NAME/ADM0NAME/NE_ID/LATITUDE/LONGITUDEを採用。現代都市のラベル点を史跡の座標へ読み替えず、半径15～20km等の地域概算に利用。
+https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_populated_places.zip
+https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/
+
+3. 日本の補助座標：出典・国土地理院住所検索結果を加工して作成。
+https://msearch.gsi.go.jp/address-search/AddressSearch
+各検索語・応答はmaps/gsi/、採用結果とURLは座標台帳。検索結果をそのまま歴史施設の精密座標にしない。小郡のように検索が複数町域へ分かれるものは自動採用しない。
+https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html
+確認した現行規約は公共データ利用規約第1.0版（PDL1.0）への準拠を説明し、出典と加工の明記を求める。本制作の加工・概算は国土地理院の歴史地名判断を示すものではない。
+
+4. 暦：国立国会図書館「日本の暦／大小暦」、1868～1872年の月大小・閏月。
+https://www.ndl.go.jp/koyomi/chapter2/s1.html
+HuTime「和暦」：内田正男編著『日本暦日原典 第四版』等を典拠とする換算サービスを利用し年初を照合。書籍そのものの新規実見とは区別する。
+https://www.hutime.jp/basicdata/calendar/calendars/Japanese.html
+https://www.hutime.jp/basicdata/calendar/form.html
+年初応答：1868-01-25／1869-02-11／1870-02-01／1871-02-19／1872-02-09。明治5年12月2日は1872-12-31。月表はdata/R20_CALENDAR_MONTHS.csv。
+国立天文台のFAQでも明治3年元日＝2月1日、明治4年元日＝2月19日を確認。
+https://www.nao.ac.jp/faq/a0304.html
+
+5. 京都土手町寓の地域対応：京都市「明治天皇行幸所木戸邸」、木戸孝允旧邸案内。
+https://www2.city.kyoto.lg.jp/somu/rekishi/fm/ishibumi/html/na103.html
+https://www.city.kyoto.lg.jp/gyozai/page/0000329188.html
+京都別邸・土手町の対応を補助確認。正確な室・建物点は未採用。
+
+6. ワシントンのWormleyホテル呼称の補助：DC政府の歴史地区・史跡資料。原記ヲームリハウス等は当該滞在文脈に限定し、現代建物点を採らない。
+https://planning.dc.gov/sites/default/files/dc/sites/op/publication/attachments/AAHT%20Text%20Final%20for%20web.pdf
+https://planning.dc.gov/sites/default/files/dc/sites/op/publication/attachments/Fifteenth%20Street%20Financial%20Historic%20District%20Amended%20Nomination_0.pdf
+
+7. フォント：Noto Sans CJK。配布物はFONT_LICENSE.txtを同梱。本文・地図以外の生成画像は不使用。
+
+
+R04追加の座標資料（2026-11-15確認）
+ケルン：Natural Earth 10m populated places v5.1.2、ne_id1159148451、Public Domain。
+クルー：Avanti West Coast Service Facilities Statement v1 2020-01-20、Network Rail公開PDF、Appendix A通算6頁 CRE行。
+https://www.networkrail.co.uk/wp-content/uploads/2020/11/Service-Facilities-Statement-First-Trenitalia-West-Coast-Rail-Limited-Avanti-West-Coast.pdf
+公開駅座標という事実データだけを地域概算点として転記し、PDF・図版の再配布は行わない。列題とN/Wの向きが逆のため方位を採用。別のHistoric England MCH5726の近傍座標とも整合（地域代表点のため相違を精密誤差としない）。
+https://historicengland.org.uk/listing/heritage-gateway/results/record/1f885988-2bef-42e5-ba07-140dde779795/MCH5726
+ローセンダール：Wikidata Q6903267/P625、51°32′N・4°27′E。分単位から十進度への換算。構造化データはCC0。
+https://www.wikidata.org/wiki/Q6903267
+https://www.wikidata.org/wiki/Wikidata:Licensing
+数値の引用と取得日をsources/R04_ADDITIONAL_GEO_SOURCES.jsonに記録。歴史施設の精密座標ではない。
+
+
+R05追加・2026-11-15確認資料からの採用
+上野宿：『江戸宿場データセット』（ROIS-DS人文学オープンデータ共同利用センター作成）、CC BY 4.0。R503-004の34.792671,136.544952を宿泊地域の概算表示に加工。
+https://geoshape.ex.nii.ac.jp/edo/post/R503/
+https://creativecommons.org/licenses/by/4.0/
+地名補助：津市「歴史散歩55 上野宿の面影」、広報津2010-12-01号・再掲PDFp29。現代PDF・図版は再配布しない。
+https://www.info.city.tsu.mie.jp/_res/projects/default_project/_page_/001/004/601/rekishisanpo55.pdf
+厚狭点：国土地理院住所検索APIの「山口県山陽小野田市厚狭」応答1件、34.053097,131.164917を地域表示に加工。座標桁数を歴史的敷地の精度に読み替えない。出典：国土地理院ウェブサイト。住所検索の外部連携提供元の条件がある場合はその条件を優先。
+https://msearch.gsi.go.jp/address-search/AddressSearch?q=山口県山陽小野田市厚狭
+国土地理院コンテンツ利用規約：2025-11-20改正・PDL1.0、出典と加工表示、外部連携には提供元規約が優先。
+https://web2.gsi.go.jp/kikakuchousei/kikakuchousei40182.html
+厚狭・枝村家：広報さんようおのだ2020-06-15 No366 p4。地名と家の存在を補助し、木戸の泊建物を特定するものではない。現代PDF・図版は再配布しない。
+https://www.city.sanyo-onoda.lg.jp/uploaded/attachment/37354.pdf
+刊本：妻木忠太編『木戸孝允日記』第3、早川良吉1933年刊。NDL DOI10.11501/1075415由来のCommons公開複製。PDF21/68/69ページ、刊本p37/131/132を実見。PD-Japan／PD-scan表示。必要3ページと字形拡大を同梱。手稿原字は未照合。
+https://commons.wikimedia.org/wiki/File:NDL1075415_木戸孝允日記_第3_part1.pdf
+詳細書誌・範囲・限界・取得ファイルハッシュ・API応答はsources/REVIEW_RV02。原文校訂は行わず、地域比定のみ条件付き採用。
+
+
+R06公開条件再確認・2026-11-15
+Natural Earth: Public Domain。CC BY 4.0の江戸宿場座標やSIL OFLの書体を含め、全素材がPDという表示はしない。
+CC BY 4.0は共有・改変・営利利用を認め、出典・ライセンスリンク・変更表示を求める。動画の帰属カードとHTMLへリンク・加工表示を補う。
+https://creativecommons.org/licenses/by/4.0/deed.ja
+国土地理院APIに関する公式説明：地理院地図の住所検索はCSISシンプルジオコーディングを利用（2015-03-23回答）。
+https://github.com/gsi-cyberjapan/gsimaps/issues/29
+CSIS参加規約第4条：図面内または説明文に「CSISシンプルジオコーディング実験（街区レベル位置参照情報）による」と記載。リンクはhttps://geocode.csis.u-tokyo.ac.jp/ 。R06では帰属カード・HTML・説明文案へ追加。
+https://geocode.csis.u-tokyo.ac.jp/home/simple-geocoding/simple-geocoding-tems-of-use/
+国土地理院ハザードマップ側の利用条件も住所検索結果（地理院地図、協力:東大CSIS）を外部連携の例として示す。
+https://disaportal.gsi.go.jp/hazardmap/copyright/copyright.html
+Wikidata構造化データはCC0、その他の名前空間の本文は別ライセンス。
+https://www.wikidata.org/wiki/Wikidata:Licensing
+Noto書体は同梱FONT_LICENSEを維持。OFLで作成した文書・画像等の利用とフォントファイル再配布を区別。
+https://openfontlicense.org/
+原文・翻訳・研究成果等を含む全研究ZIPの公開再配布許諾は未確認。動画・地図の素材利用条件をZIP全体の許諾に読み替えない。公開・投稿を実行したものではない。
+
+R07追加分
+追加都市点：Natural Earth v5.1.2（Public Domain）、Wikidata P625構造化データ（CC0）。各source_urlにrevision IDを記録し、取得した座標・版の事実スナップショットをsources/R07_WIKIDATA_COORDINATE_FACTS.jsonへ保存。
+https://www.wikidata.org/wiki/Wikidata:Licensing
+使節団比較：JACAR岩倉使節団行程年表。日付・地名・交通等の事実のみ抽出。現代の説明全文・画像は複製しない。取得版のハッシュをR07_JACAR_PROVENANCE.jsonに記録。
+https://www.jacar.go.jp/exhibition/iwakura/history/
+船位：原記を元にした研究上の表示仮説であり、海図・航海原簿の取得や数値の正式採用を意味しない。
+
+行程①追加の地域参考点は各行の source_url に記載。江戸宿場データセット、歴史的行政区域データセットβ版、『日本歴史地名大系』地名項目データセット（CODH作成、doi:10.20676/00000448）、GeoLOD。Geoshape https://geoshape.ex.nii.ac.jp/ 。上記各データセットの提供条件に従う（CC BY 4.0）。建物位置や船の碇泊位置は表さない。
+行程③の新規参考点3件は各行に出典URL。秋穂は歴史的行政区域データセットβ版、今井村は国勢調査町丁・字等別境界データセット、高知城下は『日本歴史地名大系』施設・地点項目データセット（CODH作成）doi:10.20676/00000456 の高知城を地域の代表点に使用。建物への訪問・宿の所在地を示さない。
+④ 吉岡宿の比定資料 大和町観光物産協会 https://www.taiwa-tp.jp/2025_06-16_yoshioka_tanbokai/ 。地域の参考点は歴史的行政区域データセットβ版（CODH作成）大和町 https://geoshape.ex.nii.ac.jp/city/resource/04421A1968.html 。

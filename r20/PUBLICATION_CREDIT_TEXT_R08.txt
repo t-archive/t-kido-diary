@@ -1,0 +1,22 @@
+地図：Natural Earth（Public Domain）
+https://www.naturalearthdata.com/about/terms-of-use/
+
+上野宿：『江戸宿場データセット』（ROIS-DS人文学オープンデータ共同利用センター作成）、CC BY 4.0
+https://geoshape.ex.nii.ac.jp/edo/post/R503/
+https://creativecommons.org/licenses/by/4.0/
+座標を宿泊地域の表示用代表点に加工。
+
+日本の補助座標：国土地理院ウェブサイトの住所検索結果を地域表示用に加工。
+https://msearch.gsi.go.jp/address-search/AddressSearch
+CSISシンプルジオコーディング実験（街区レベル位置参照情報）による。
+https://geocode.csis.u-tokyo.ac.jp/
+
+ローセンダール等の補助座標：Wikidata構造化データ（CC0）。そのほかの座標典拠は同梱台帳参照。
+
+歴史地名の比定と表示上の前日位置継続はR20による加工・研究判断。
+採用座標のない日は前日の表示位置を継続。灰色の白抜きピンは、その日の滞在の実証ではありません。
+現代海岸線の概略図を使用し、当時の行政区・交通網を復元するものではありません。
+
+R07追加：Additional town coordinates from Natural Earth and Wikidata structured data (CC0). Delegation itinerary comparison: Japan Center for Asian Historical Records. Marine display assumptions and source-linkage corrections by R20. Private research edition; not published.
+
+R08: review treatments and interface changes; private research. Existing attribution and license conditions retained.

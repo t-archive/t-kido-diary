@@ -1,0 +1,11 @@
+.cp-reading{border-left:2px solid #849884;margin:1em 0;padding:.12em 0 .2em .85em;scroll-margin-top:18px;overflow-wrap:anywhere}
+.cp-meta,.cp-label{font:normal .78rem/1.6 system-ui,sans-serif;color:inherit;opacity:.82}
+.cp-reading h4{margin:.22em 0 .4em;font-size:1.06em}
+.cp-text,.cp-verse,.cp-note p,.cp-quote p,.cp-continuation{white-space:pre-wrap;overflow-wrap:anywhere;line-height:inherit}
+.cp-text,.cp-continuation{margin:.35em 0}.cp-verse{margin:.45em 0 .7em;padding-left:.8em;border-left:1px solid #829485}
+.cp-note,.cp-quote,.cp-previous{margin:.4em 0;font:normal .85rem/1.8 system-ui,sans-serif}
+.cp-note summary,.cp-quote summary,.cp-previous summary{cursor:pointer;width:fit-content}
+.cp-note summary{font-size:.74rem;border:1px solid #81988a;border-radius:1em;padding:0 .6em;display:list-item}
+.cp-note p,.cp-quote p{margin:.4em 0;padding:.35em .6em;border-left:1px solid #849884}
+.cp-previous{border-top:1px solid #9da99c;margin-top:1.2em;padding-top:.65em}.cp-previous .translation-body,.cp-previous .content{font:inherit}
+.cp-reading:focus{outline:2px solid #977032;outline-offset:4px}.cp-mode-label{font:600 .85rem/1.6 system-ui,sans-serif;margin:.6em 0}

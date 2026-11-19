@@ -1,0 +1,14 @@
+/* P04: Standalone SVG glyph renderings, not web fonts. The text content remains the original Unicode character. */
+.kido-rare-glyph {display:inline-block; width:1em; height:1em;vertical-align:-.11em;overflow:hidden;color:transparent!important;background-repeat:no-repeat;background-position:center;background-size:contain;font-weight:normal!important;font-style:normal!important;}
+.kido-rare-glyph[data-cp="3b66"]{background-image:url("glyph-3b66.svg")}
+.kido-rare-glyph[data-cp="1b08e"]{background-image:url("glyph-1b08e.svg")}
+.kido-rare-glyph[data-cp="22729"]{background-image:url("glyph-22729.svg")}
+.kido-rare-glyph[data-cp="2cd2e"]{background-image:url("glyph-2cd2e.svg")}
+.kido-rare-glyph[data-cp="29e49"]{background-image:url("glyph-29e49.svg")}
+body[data-theme="dark"] .kido-rare-glyph,body[data-theme="dark"] .gaiji[data-codepoint]:not(:has(.kido-rare-glyph)),body[data-theme="dark"] .extb:not(:has(.kido-rare-glyph)){filter:invert(1);}
+/* Direct support if the original revision HTML already contains gaiji/extb spans. */
+.gaiji[data-codepoint="U+3B66"]:not(:has(.kido-rare-glyph)){background-image:url("glyph-3b66.svg")}
+.gaiji[data-codepoint="U+1B08E"]:not(:has(.kido-rare-glyph)){background-image:url("glyph-1b08e.svg")}
+.gaiji[data-codepoint="U+22729"]:not(:has(.kido-rare-glyph)),.extb:not(:has(.kido-rare-glyph)){background-image:url("glyph-22729.svg")}
+.gaiji[data-codepoint="U+2CD2E"]:not(:has(.kido-rare-glyph)){background-image:url("glyph-2cd2e.svg")}
+.gaiji[data-codepoint]:not(:has(.kido-rare-glyph)),.extb:not(:has(.kido-rare-glyph)){display:inline-block;width:1em;height:1em;overflow:hidden;vertical-align:-.11em;color:transparent!important;background-repeat:no-repeat;background-position:center;background-size:contain;}

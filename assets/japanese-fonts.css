@@ -1,0 +1,3 @@
+/* P04: no hosted font software. Use the viewer's installed Japanese fonts. */
+:root{--jp-serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif CJK JP","MS PMincho",serif;
+--jp-sans:"Yu Gothic","Hiragino Kaku Gothic ProN","Noto Sans CJK JP","Meiryo",system-ui,sans-serif;}
